@@ -16,5 +16,10 @@ class Admin extends CI_Controller {
 	{
 		$this->load->view('admin/index');
 	}
+
+    public function siswa() {
+        $data['siswa'] = $this->m_model->get_data('siswa')->result();
+        $this->load->view('admin/siswa', $data);
+    }
 }
 ?>

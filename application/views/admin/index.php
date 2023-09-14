@@ -9,7 +9,7 @@
 <!-- Sidebar -->
 <div class="w3-sidebar w3-light-grey w3-bar-block" style="width:25%">
   <h3 class="w3-bar-item">Dashboard</h3>
-  <a href="#" class="w3-bar-item w3-button">Siswa</a>
+    <a href="admin/siswa" class="w3-bar-item w3-button">Siswa</a>
   <a href="#" class="w3-bar-item w3-button">Guru</a>
 </div>
 
@@ -20,32 +20,63 @@
   <h1>Sistem Aplikasi Sekolah</h1>
 </div>
 
-<div class="row mx-2">
-  <div class="card col-3 mb-3">
-    <div class="card-body">
-      This is some text within a card body.
-    </div>
-  </div>
-  <div class="card col-3 mb-3">
-    <div class="card-body">
-      This is some text within a card body.
-    </div>
-  </div>
-  <div class="card col-3 mb-3">
-    <div class="card-body">
-      This is some text within a card body.
-    </div>
-  </div>
-  <div class="card col-3 mb-3">
-    <div class="card-body">
-      This is some text within a card body.
-    </div>
-  </div>
-</div>
-
 <div class="w3-container">
-<h1>Selamat datang <?php echo $this->session->userdata('username') ?></h1>
+    <br><br>
+<h1>Selamat datang <strong class="text-primary"><?php echo $this->session->userdata('username') ?></strong></h1>
 </div>
+<br>
+<div class="container">
+          <div class="row">
+            <!-- Card 1 -->
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card">
+                <div class="card-header">Featured</div>
+                <div class="card-body">
+                  <h5 class="card-title">Special title treatment</h5>
+                  <p class="card-text">
+                    With supporting text below as a natural lead-in to
+                    additional content.
+                  </p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card">
+                <div class="card-header">Featured</div>
+                <div class="card-body">
+                  <h5 class="card-title">Special title treatment</h5>
+                  <p class="card-text">
+                    With supporting text below as a natural lead-in to
+                    additional content.
+                  </p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card">
+                <div class="card-header">Featured</div>
+                <div class="card-body">
+                  <h5 class="card-title">Special title treatment</h5>
+                  <p class="card-text">
+                    With supporting text below as a natural lead-in to
+                    additional content.
+                  </p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+            </div>
+            <!-- Tambahkan card lainnya di sini sesuai kebutuhan -->
+          </div>
+        </div>
+      </div>
+    </div>
+
 
 </div>
       
