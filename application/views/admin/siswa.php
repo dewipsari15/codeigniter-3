@@ -1,45 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Siswa</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 </head>
-<body class="min-vh-100 d-flex align-items-center">
-<?php $this->load->view('admin/sidebar'); ?>
-    <div class="card w-75 p-3" style="margin-left:20%">
-        <div class="d-flex justify-content-between bg-gray">
-        <h3 class="text-center">Data Siswa</h3>
-        <button class="btn btn-sm btn-primary">Tambah Data</button>
-    </div>
-<table class="table table-striped table-hover">
-  <thead>
-    <tr>
-      <th scope="col">No</th>
-      <th scope="col">Nama Siswa</th>
-      <th scope="col">Gender</th>
-      <th scope="col">Nisn</th>
-      <th scope="col">Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <?php 
-        foreach ($result as $row):
-    ?>
-    <tr>
-      <th scope="row"><?= $row->id_siswa?></th>
-      <td><?= $row->nama_siswa;?></td>
-      <td><?= $row->gender;?></td>
-      <td><?= $row->nisn;?></td>
-      <td>
-        <button class="btn btn-sm btn-primary">Edit</button>
-        <button class="btn btn-sm btn-danger">Hapus</button>
-      </td>
-    </tr>
-    <?php endforeach;?>
-  </tbody>
-</table>
-        </div>
+<body>
+  <div class="d-flex">
+  <?php $this->load->view('components/sidebar') ?>
+<div class="container">
+  <table class="table table-striped table-hover"> 
+        <thead> 
+            <tr> 
+                <th>No</th> 
+                <th>Nama</th> 
+                <th>NISN</th> 
+                <th>Gender</th> 
+                <th>Kelas</th> 
+                <th class="text-center">Aksi</th> 
+            </tr> 
+        </thead> 
+        <tbody class="table-group-divider"> 
+          <?php $no=0;foreach($siswa as $row): $no++ ?> 
+                <tr> 
+                    <td><?php echo $no ?></td> 
+                    <td><?php echo $row->nama_siswa ?></td> 
+                    <td><?php echo $row->nisn ?></td> 
+                    <td><?php echo $row->gender ?></td> 
+                    <td><?php echo tampil_full_kelas_byid($row->id_kelas) ?></td>
+                    <td class="text-center"> 
+                        <a href="" class="btn btn-sm btn-primary">Detail</a> 
+                        <button onclick="hapus(<?php echo $row->id_siswa; ?>)" class="btn btn-sm btn-danger">Delete</button> 
+                    </td> 
+                </tr> 
+          <?php endforeach ?> 
+        </tbody> 
+  </table>
+
+  </div>
+</div>
+</div>
+  <script>
+        function hapus(id) {
+            var yes = confirm('Yakin Di Hapus?');
+            if (yes == true) {
+                window.location.href = "<?php echo base_url('admin/hapus_siswa/'); ?>" + id;
+            }
+        }
+    </script>
+
 </body>
 </html>
