@@ -10,7 +10,8 @@
 <body>
   <div class="d-flex">
   <?php $this->load->view('components/sidebar') ?>
-<div class="container">
+<div class="container-fluid">
+<?php $this->load->view('components/navbar') ?>
   <table class="table table-striped table-hover"> 
         <thead> 
             <tr> 
@@ -31,7 +32,7 @@
                     <td><?php echo $row->gender ?></td> 
                     <td><?php echo tampil_full_kelas_byid($row->id_kelas) ?></td>
                     <td class="text-center"> 
-                        <a href="" class="btn btn-sm btn-primary">Detail</a> 
+                        <a href="<?php echo base_url('admin/update_siswa/'). $row->id_siswa; ?>" class="btn btn-sm btn-primary">Update</a> 
                         <button onclick="hapus(<?php echo $row->id_siswa; ?>)" class="btn btn-sm btn-danger">Delete</button> 
                     </td> 
                 </tr> 

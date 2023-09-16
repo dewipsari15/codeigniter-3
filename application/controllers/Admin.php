@@ -32,15 +32,36 @@ class Admin extends CI_Controller {
 			'nama_siswa' => $this->input->post('nama'),
 			'nisn' => $this->input->post('nisn'),
 			'gender' => $this->input->post('gender'),
-			'id_kelas' => $this->input->post('kelas'),
+			'id_kelas' => $this->input->post('id_kelas'),
 		];
 		$this->m_model->tambah_data('siswa', $data);
 		redirect(base_url('admin/siswa'));
     }
 
-	public function update_siswa() {
-        $data['kelas'] = $this->m_model->get_data('kelas')->result();
+    public function update_siswa($id){
+        $data['siswa']=$this->m_model->get_by_id('siswa', 'id_siswa', $id)->result();
+        $data['kelas']=$this->m_model->get_data('kelas')->result();
         $this->load->view('admin/update_siswa', $data);
+    }
+
+    public function aksi_update_siswa()
+    {
+        $data = array (
+            'nama_siswa' => $this->input->post('nama'),
+            'nisn' => $this->input->post('nisn'),
+            'gender' => $this->input->post('gender'),
+            'id_kelas' => $this->input->post('kelas'),
+        );
+        $eksekusi=$this->m_model->update_data
+        ('siswa', $data, array('id_siswa'=>$this->input->post('id_siswa')));
+        if($eksekusi)
+        {
+            redirect(base_url('admin/siswa'));
+        }
+        else
+        {
+            redirect(base_url('admin/update_siswa/'.$this->input->post('id_siswa')));
+        }
     }
 
     public function hapus_siswa($id) {
