@@ -50,7 +50,7 @@ class Admin extends CI_Controller {
             'nama_siswa' => $this->input->post('nama'),
             'nisn' => $this->input->post('nisn'),
             'gender' => $this->input->post('gender'),
-            'id_kelas' => $this->input->post('kelas'),
+            'id_kelas' => $this->input->post('id_kelas'),
         );
         $eksekusi=$this->m_model->update_data
         ('siswa', $data, array('id_siswa'=>$this->input->post('id_siswa')));
