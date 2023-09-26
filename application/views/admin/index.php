@@ -70,7 +70,6 @@
       </div>
     </div>
   </div>
-  <h1>Selamat datang <strong class="text-primary"><?php echo $this->session->userdata('username') ?></strong></h1>
 </div>
 </div>
 </div>

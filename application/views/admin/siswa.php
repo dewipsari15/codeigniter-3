@@ -10,35 +10,44 @@
 <body>
   <div class="d-flex">
   <?php $this->load->view('components/sidebar') ?>
-<div class="container-fluid">
+<div class="container">
 <?php $this->load->view('components/navbar') ?>
-  <table class="table table-striped table-hover"> 
-        <thead> 
-            <tr> 
-                <th>No</th> 
-                <th>Nama</th> 
-                <th>NISN</th> 
-                <th>Gender</th> 
-                <th>Kelas</th> 
-                <th class="text-center">Aksi</th> 
-            </tr> 
-        </thead> 
-        <tbody class="table-group-divider"> 
-          <?php $no=0;foreach($siswa as $row): $no++ ?> 
-                <tr> 
-                    <td><?php echo $no ?></td> 
-                    <td><?php echo $row->nama_siswa ?></td> 
-                    <td><?php echo $row->nisn ?></td> 
-                    <td><?php echo $row->gender ?></td> 
-                    <td><?php echo tampil_full_kelas_byid($row->id_kelas) ?></td>
-                    <td class="text-center"> 
-                        <a href="<?php echo base_url('admin/update_siswa/'). $row->id_siswa; ?>" class="btn btn-sm btn-primary">Update</a> 
-                        <button onclick="hapus(<?php echo $row->id_siswa; ?>)" class="btn btn-sm btn-danger">Delete</button> 
-                    </td> 
-                </tr> 
-          <?php endforeach ?> 
-        </tbody> 
-  </table>
+<div class="card">
+  <div class="card-header d-flex justify-content-between">
+    <h1>Siswa</h1>
+    <a href="<?php echo base_url('admin/tambah_siswa'); ?>" class="btn btn-sm btn-primary">Tambah</a>
+  </div>
+  <div class="card-body">
+    <table class="table table-striped table-hover"> 
+          <thead> 
+              <tr> 
+                  <th>No</th> 
+                  <th>Nama</th> 
+                  <th>NISN</th> 
+                  <th>Gender</th> 
+                  <th>Kelas</th> 
+                  <th class="text-center">Aksi</th> 
+              </tr> 
+          </thead> 
+          <tbody class="table-group-divider"> 
+            <?php $no=0;foreach($siswa as $row): $no++ ?> 
+                  <tr> 
+                      <td><?php echo $no ?></td> 
+                      <td><img src="<?php echo base_url('images/siswa/' .$row->foto) ?>" alt="" width='50'></td> 
+                      <td><?php echo $row->nama_siswa ?></td> 
+                      <td><?php echo $row->nisn ?></td> 
+                      <td><?php echo $row->gender ?></td> 
+                      <td><?php echo tampil_full_kelas_byid($row->id_kelas) ?></td>
+                      <td class="text-center"> 
+                          <a href="<?php echo base_url('admin/update_siswa/'). $row->id_siswa; ?>" class="btn btn-sm btn-primary">Update</a> 
+                          <button onclick="hapus(<?php echo $row->id_siswa; ?>)" class="btn btn-sm btn-danger">Delete</button> 
+                      </td> 
+                  </tr> 
+            <?php endforeach ?> 
+          </tbody> 
+    </table>
+  </div>
+</div>
 
   </div>
 </div>
