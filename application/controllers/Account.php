@@ -15,6 +15,12 @@ class Account extends CI_Controller {
 		$this->load->view('account/profile', $data);
 	}
 
+	public function profil()
+	{
+		$data['user'] = $this->m_model->get_by_id('admin', 'id', $this->session->userdata('id'))->result();
+		$this->load->view('account/profileKeuangan', $data);
+	}
+
 	public function aksi_ubah_akun()
 	{
 		$password_baru = $this->input->post('password_baru');

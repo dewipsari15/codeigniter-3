@@ -259,15 +259,15 @@
                     <span>General</span>
                 </li>
                 <li class="sidebar-dropdown">
-                    <a href="<?php echo base_url('admin'); ?>">
+                    <a href="<?php echo base_url('keuangan'); ?>">
                     <i class="fa fa-tachometer-alt"></i>
                     <span>Dashboard</span>
                     </a>
                 </li>
                 <li class="sidebar-dropdown">
-                    <a href="<?php echo base_url('admin/siswa'); ?>">
-                    <i class="fa fa-graduation-cap"></i>
-                    <span>Siswa</span>
+                    <a href="<?php echo base_url('keuangan/pembayaran'); ?>">
+                    <i class="fa fa-money-bill"></i>
+                    <span>Pembayaran</span>
                     </a>
                 </li>
                 <li class="sidebar-dropdown">
@@ -283,7 +283,7 @@
                     </a>
                 </li>
                 <li class="sidebar-dropdown">
-                    <a href="<?php echo base_url('account'); ?>">
+                    <a href="<?php echo base_url('account/profil'); ?>">
                     <i class="fa fa-user"></i>
                     <span>Account</span>
                     </a>
@@ -300,12 +300,10 @@
     </div>
     <!-- sidebar-content  -->
     <div class="sidebar-footer">
-      <li class="sidebar-dropdown">
-         <a href="<?php echo base_url('auth/logout'); ?>">
-            <i class="fa fa-arrow-right-from-bracket"></i>
-            <span>Logout</span>
-         </a>
-      </li>
+      <a href="#">
+        <i class="fa-solid fa-right-from-bracket"></i>
+        <span class="badge badge-pill badge-warning notification">3</span>
+      </a>
     </div>
   </nav>
   <!-- sidebar-wrapper  -->

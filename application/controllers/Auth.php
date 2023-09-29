@@ -29,11 +29,13 @@ class Auth extends CI_Controller {
 		  'id' => $result['id'], 
 		 ]; 
 		 $this->session->set_userdata($data); 
-		 if ($this->session->userdata('role')=='admin'){ 
-		  redirect(base_url()."admin"); 
-		 }else{ 
-		  redirect(base_url()."auth"); 
-		 } 
+			if ($this->session->userdata('role') == 'admin') {
+				redirect(base_url() . "admin");
+			} elseif ($this->session->userdata('role') == 'keuangan') {
+				redirect(base_url() . "keuangan");
+			} else {
+				redirect(base_url() . "auth");
+			}
 		}else{ 
 		 redirect(base_url()."auth"); 
 		} 
