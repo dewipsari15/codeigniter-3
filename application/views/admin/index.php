@@ -7,7 +7,7 @@
 <body>
 <div class="d-flex">
 <?php $this->load->view('components/sidebar') ?>
-<div class="main">
+<div class="main w-100">
 <?php $this->load->view('components/navbar') ?>
   <div class="row">
     <!-- Card 1 -->

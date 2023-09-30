@@ -146,28 +146,6 @@
         border-radius: 4px;
         }
 
-        /*--------------------------side-footer------------------------------*/
-
-        .sidebar-footer {
-        position: absolute;
-        width: 100%;
-        bottom: 0;
-        display: flex;
-        justify-content: start;
-        }
-
-        .sidebar-footer > a {
-        flex-grow: 1;
-        height: 30px;
-        line-height: 30px;
-        position: relative;
-        }
-
-        .sidebar-footer > a .notification {
-        position: absolute;
-        top: 0;
-        }
-
         /*--------------------------page-content-----------------------------*/
 
         .page-wrapper .page-content {
@@ -290,7 +268,7 @@
                 </li>
                 <li class="sidebar-dropdown">
                     <a href="<?php echo base_url('auth/logout'); ?>">
-                    <i class="fa fa-arrow-right-from-bracket"></i>
+                    <i class="fa fa-arrow-right"></i>
                     <span>Logout</span>
                     </a>
                 </li>
@@ -299,12 +277,12 @@
       <!-- sidebar-menu  -->
     </div>
     <!-- sidebar-content  -->
-    <div class="sidebar-footer">
+    <!-- <div class="sidebar-footer">
       <a href="#">
         <i class="fa-solid fa-right-from-bracket"></i>
         <span class="badge badge-pill badge-warning notification">3</span>
       </a>
-    </div>
+    </div> -->
   </nav>
   <!-- sidebar-wrapper  -->
   <main class="page-content">

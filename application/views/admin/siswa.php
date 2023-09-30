@@ -10,7 +10,7 @@
 <body>
   <div class="d-flex">
   <?php $this->load->view('components/sidebar') ?>
-<div class="container">
+<div class="container w-100">
 <?php $this->load->view('components/navbar') ?>
 <div class="card">
   <div class="card-header d-flex justify-content-between">

@@ -17,7 +17,7 @@
                 </div>
                 <div class="card-body">
                         <?php foreach($user as $users) : ?>
-                        <form class="row" action="<?php echo base_url('account/aksi_ubah_akun'); ?>" enctype="multipart/form-data" method="post" class="row">
+                        <form class="row" action="<?php echo base_url('account/aksi_ubah_profile'); ?>" enctype="multipart/form-data" method="post" class="row">
                             <div class="mb-3 col-6">
                                 <label for="exampleInputEmail1" class="form-label">Email</label>
                                 <input type="email" class="form-control" value="<?php echo $users->email ?>" name="email">

@@ -7,7 +7,7 @@
 <body>
 <div class="d-flex">
     <?php $this->load->view('components/sidebarKeuangan') ?>
-<div class="container">
+<div class="container w-100">
 <?php $this->load->view('components/navbar') ?>
         <div class="min-vh-100">
           <div class='card w-75 m-auto p-3'>

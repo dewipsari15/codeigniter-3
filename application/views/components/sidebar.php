@@ -146,28 +146,6 @@
         border-radius: 4px;
         }
 
-        /*--------------------------side-footer------------------------------*/
-
-        .sidebar-footer {
-        position: absolute;
-        width: 100%;
-        bottom: 0;
-        display: flex;
-        justify-content: start;
-        }
-
-        .sidebar-footer > a {
-        flex-grow: 1;
-        height: 30px;
-        line-height: 30px;
-        position: relative;
-        }
-
-        .sidebar-footer > a .notification {
-        position: absolute;
-        top: 0;
-        }
-
         /*--------------------------page-content-----------------------------*/
 
         .page-wrapper .page-content {
@@ -297,15 +275,6 @@
             </ul>
       </div>
       <!-- sidebar-menu  -->
-    </div>
-    <!-- sidebar-content  -->
-    <div class="sidebar-footer">
-      <li class="sidebar-dropdown">
-         <a href="<?php echo base_url('auth/logout'); ?>">
-            <i class="fa fa-arrow-right-from-bracket"></i>
-            <span>Logout</span>
-         </a>
-      </li>
     </div>
   </nav>
   <!-- sidebar-wrapper  -->

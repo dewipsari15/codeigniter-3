@@ -8,7 +8,8 @@
 
 <div class="d-flex">
 <?php $this->load->view('components/sidebar') ?>
-<div class="container">
+<div class="container w-100">
+<?php $this->load->view('components/navbar') ?>
         <div class="min-vh-100">
           <div class='card w-75 m-auto p-3'>
         <h3 class="text-center ">Tambah Data Siswa</h3>

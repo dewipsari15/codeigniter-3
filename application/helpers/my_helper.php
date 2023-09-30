@@ -20,4 +20,8 @@ function tampil_nama_siswa($id)
         return $stmt;
     }
 }
+
+function convRupiah($value) {
+    return 'Rp. ' . number_format($value);
+}
 ?>
