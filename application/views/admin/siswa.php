@@ -59,6 +59,17 @@
                         </tbody>
                     </table>
                 </div>
+                <div class="card-footer">
+                    <form action="<?= base_url('admin/import') ?>" method="post" enctype="multipart/form-data"
+                        class="row">
+                        <div class="col-6">
+                            <input type="file" name="file" class="form-control col-6" id="inputGroupFile01">
+                        </div>
+                        <div class="col-6 text-end">
+                            <input type="submit" name="import" class="btn btn-sm btn-primary m-2" value="Import" />
+                        </div>
+                    </form>
+                </div>
             </div>
 
         </div>

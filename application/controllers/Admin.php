@@ -241,5 +241,63 @@ class Admin extends CI_Controller {
         $writer = new Xlsx($spreadsheet);
         $writer->save('php://output');
     }
+
+    public function import()
+    {
+        if (isset($_FILES['file']['name'])) {
+            $path = $_FILES['file']['tmp_name'];
+            $object = PhpOffice\PhpSpreadsheet\IOFactory::load($path);
+            foreach ($object->getWorksheetIterator() as $worksheet) {
+                $highestRow = $worksheet->getHighestRow();
+                $highestColumn = $worksheet->getHighestColumn();
+                for ($row = 2; $row <= $highestRow; $row++) {
+                    $id_siswa = $worksheet
+                        ->getCellByColumnAndRow(1, $row)
+                        ->getValue();
+                    $nama_siswa = $worksheet
+                        ->getCellByColumnAndRow(2, $row)
+                        ->getValue();
+                    $nisn = $worksheet
+                        ->getCellByColumnAndRow(3, $row)
+                        ->getValue();
+                    $gender = $worksheet
+                        ->getCellByColumnAndRow(4, $row)
+                        ->getValue();
+                    $kelas = $worksheet
+                        ->getCellByColumnAndRow(5, $row)
+                        ->getValue();
+
+                    list($tingkat_kelas, $jurusan_kelas) = explode(
+                        ' ',
+                        $kelas,
+                        2
+                    );
+
+                    $id_kelas = $this->m_model->getKelasByTingkatJurusan(
+                        $tingkat_kelas,
+                        $jurusan_kelas
+                    );
+
+                    if ($id_kelas) {
+                        $data = [
+                            'nama_siswa' => $nama_siswa,
+                            'nisn' => $nisn,
+                            'gender' => $gender,
+                            'id_kelas' => $id_kelas,
+                        ];
+
+                        $this->m_model->tambah_data('siswa', $data);
+
+                    
+                    $siswa_exist = $this->m_model->get_by_nisn($nisn);
+                    }
+                }
+            }
+            redirect(base_url('admin/siswa'));
+        } else {
+            echo 'Invalid File';
+        }
+    }
+
 }
 ?>

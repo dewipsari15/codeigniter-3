@@ -67,5 +67,20 @@ class M_model extends CI_Model{
 
         return $query->result();
     }
+
+    public function getKelasByTingkatJurusan($tingkat_kelas, $jurusan_kelas)
+    {
+        $this->db->select('id');
+        $this->db->where('tingkat_kelas', $tingkat_kelas);
+        $this->db->where('jurusan_kelas', $jurusan_kelas);
+        $query = $this->db->get('kelas');
+
+        if ($query->num_rows() > 0) {
+            $row = $query->row();
+            return $row->id;
+        } else {
+            return false;
+        }
+    }
 }
 ?>

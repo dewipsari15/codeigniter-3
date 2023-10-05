@@ -63,10 +63,7 @@
                             <input type="file" name="file" class="form-control col-6" id="inputGroupFile01">
                         </div>
                         <div class="col-6 text-end">
-                            <a href="<?php echo base_url('keuangan/export'); ?>" class="btn btn-sm btn-primary m-2"
-                                type="submit">
-                                <i class="fa fa-upload m-1"></i>Import
-                            </a>
+                            <input type="submit" name="import" class="btn btn-sm btn-primary m-2" value="Import" />
                         </div>
                     </form>
                 </div>
