@@ -70,21 +70,55 @@ class Admin extends CI_Controller {
 
     public function aksi_update_siswa()
     {
-        $data = array (
-            'nama_siswa' => $this->input->post('nama'),
-            'nisn' => $this->input->post('nisn'),
-            'gender' => $this->input->post('gender'),
-            'id_kelas' => $this->input->post('id_kelas'),
-        );
-        $eksekusi=$this->m_model->update_data
-        ('siswa', $data, array('id_siswa'=>$this->input->post('id_siswa')));
-        if($eksekusi)
-        {
-            redirect(base_url('admin/siswa'));
+        $foto = $_FILES['foto']['name'];
+        $foto_temp = $_FILES['foto']['tmp_name'];
+
+        if ($foto) {
+            $kode = round(microtime(true) * 1000);
+            $file_name = $kode . '_' . $foto;
+            $upload_path = './images/siswa/' . $file_name;
+
+            if (move_uploaded_file($foto_temp, $upload_path)) {
+                $old_file = $this->m_model->get_siswa_foto_by_id(
+                    $this->input->post('id_siswa')
+                );
+                if ($old_file && file_exists('./images/siswa/' . $old_file)) {
+                    unlink('./images/siswa/' . $old_file);
+                }
+
+                $data = [
+                    'foto' => $file_name,
+                    'nama_siswa' => $this->input->post('nama'),
+                    'nisn' => $this->input->post('nisn'),
+                    'gender' => $this->input->post('gender'),
+                    'id_kelas' => $this->input->post('id_kelas'),
+                ];
+            } else {
+                redirect(
+                    base_url(
+                        'admin/ubah_siswa/' . $this->input->post('id_siswa')
+                    )
+                );
+            }
+        } else {
+            $data = [
+                'nama_siswa' => $this->input->post('nama'),
+                'nisn' => $this->input->post('nisn'),
+                'gender' => $this->input->post('gender'),
+                'id_kelas' => $this->input->post('kelas'),
+            ];
         }
-        else
-        {
-            redirect(base_url('admin/update_siswa/'.$this->input->post('id_siswa')));
+
+        $eksekusi = $this->m_model->ubah_data('siswa', $data, [
+            'id_siswa' => $this->input->post('id_siswa'),
+        ]);
+
+        if ($eksekusi) {
+            redirect(base_url('admin/siswa'));
+        } else {
+            redirect(
+                base_url('admin/ubah_siswa/' . $this->input->post('id_siswa'))
+            );
         }
     }
 
@@ -266,30 +300,45 @@ class Admin extends CI_Controller {
                     $kelas = $worksheet
                         ->getCellByColumnAndRow(5, $row)
                         ->getValue();
-
+    
                     list($tingkat_kelas, $jurusan_kelas) = explode(
                         ' ',
                         $kelas,
                         2
                     );
-
+    
                     $id_kelas = $this->m_model->getKelasByTingkatJurusan(
                         $tingkat_kelas,
                         $jurusan_kelas
                     );
-
+    
                     if ($id_kelas) {
+                        $file_name = 'User.png';
+    
+                        if (isset($_FILES['foto']['name']) && !empty($_FILES['foto']['name'])) {
+                            $file_name = $_FILES['foto']['name'];
+                            $file_temp = $_FILES['foto']['tmp_name'];
+                            $kode = round(microtime(true) * 1000);
+                            $file_name = $kode . '_' . $file_name;
+                            $upload_path = './images/siswa/' . $file_name;
+    
+                            if (move_uploaded_file($file_temp, $upload_path)) {
+                            } else {
+                                $file_name = 'User.png';
+                            }
+                        }
+    
                         $data = [
                             'nama_siswa' => $nama_siswa,
                             'nisn' => $nisn,
                             'gender' => $gender,
                             'id_kelas' => $id_kelas,
+                            'foto' => $file_name,
                         ];
-
+    
                         $this->m_model->tambah_data('siswa', $data);
-
-                    
-                    $siswa_exist = $this->m_model->get_by_nisn($nisn);
+    
+                        $siswa_exist = $this->m_model->get_by_nisn($nisn);
                     }
                 }
             }
@@ -298,6 +347,5 @@ class Admin extends CI_Controller {
             echo 'Invalid File';
         }
     }
-
 }
 ?>
