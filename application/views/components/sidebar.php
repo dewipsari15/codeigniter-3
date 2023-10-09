@@ -262,8 +262,8 @@
                         </li>
                         <li class="sidebar-dropdown">
                             <a href="#">
-                                <i class="far fa-gem"></i>
-                                <span>Components</span>
+                                <i class="fa fa-user-tie"></i>
+                                <span>Guru</span>
                             </a>
                         </li>
                         <li class="sidebar-dropdown">

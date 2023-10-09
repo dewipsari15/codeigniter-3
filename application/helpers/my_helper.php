@@ -24,4 +24,15 @@ function tampil_nama_siswa($id)
 function convRupiah($value) {
     return 'Rp. ' . number_format($value);
 }
+
+function tampil_full_mapel_byid($id)
+{
+    $ci=& get_instance();
+    $ci->load->database();
+    $result = $ci->db->where('id',$id)->get('mapel');
+        foreach($result->result() as $c){
+            $stmt = $c->nama_mapel;
+            return $stmt;
+    }
+}
 ?>
